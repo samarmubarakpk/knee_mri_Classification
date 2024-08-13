@@ -5,9 +5,9 @@ import numpy as np
 import torchvision.transforms as transforms
 
 # Load the models
-normal_abnormal_model = torch.load('path_to_normal_abnormal_model.pth')
-acl_tear_model = torch.load('path_to_acl_tear_model.pth')
-other_condition_model = torch.load('path_to_other_condition_model.pth')
+normal_abnormal_model = torch.load('model_abnormal.pth')
+acl_tear_model = torch.load('model_acl1.pth')
+other_condition_model = torch.load('model_acl2.pth')
 
 # Ensure models are in evaluation mode
 normal_abnormal_model.eval()
