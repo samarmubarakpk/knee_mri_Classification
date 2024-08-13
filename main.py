@@ -4,15 +4,28 @@ from PIL import Image
 import numpy as np
 import torchvision.transforms as transforms
 
-# Load the models
-normal_abnormal_model = torch.load('model_abnormal.pth')
-acl_tear_model = torch.load('model_acl1.pth')
-other_condition_model = torch.load('model_acl2.pth')
+normal_abnormal_model = None
+acl_tear_model = None
+other_condition_model = None
+
+try:
+    normal_abnormal_model = torch.load('model_abnormal.pth', weights_only=True)
+except Exception as e:
+    print(f"Error loading model: {e}")
+try:
+    acl_tear_model = torch.load('model_acl1.pth', weights_only=True)
+except Exception as e:
+    print(f"Error loading model: {e}")
+try:
+    other_condition_model = torch.load('model_acl2.pth', weights_only=True)
+except Exception as e:
+    print(f"Error loading model: {e}")
+
 
 # Ensure models are in evaluation mode
-normal_abnormal_model.eval()
-acl_tear_model.eval()
-other_condition_model.eval()
+# normal_abnormal_model.eval()
+# acl_tear_model.eval()
+# other_condition_model.eval()
 
 # Function to preprocess the image
 def preprocess_image(image):
